@@ -81,3 +81,46 @@ Object.keys(person)
 > [ 'name', 'address', 'phoneNumbers' ]
 ```
 
+##### Iterating Over Objects
+
+Objects in JS are not iterable in the same way that arrays are. Instead a ```for...in``` statement is needed.
+
+The for loop will return key values within the object. For example:
+
+```
+var planetMoons = {
+  mercury: 0,
+  venus: 0,
+  earth: 1,
+  mars: 2,
+  jupiter: 67,
+  saturn: 62,
+  uranus: 27,
+  neptune: 14
+};
+
+for (var planet in planetMoons) {
+  var numberOfMoons = planetMoons[planet];
+  console.log("Planet: " + planet + ", # of Moons: "+ numberOfMoons);
+}
+
+> Planet: mercury, # of Moons: 0
+> Planet: venus, # of Moons: 0
+> Planet: earth, # of Moons: 1
+> Planet: mars, # of Moons: 2
+> Planet: jupiter, # of Moons: 67
+> Planet: saturn, # of Moons: 62
+> Planet: uranus, # of Moons: 27
+> Planet: neptune, # of Moons: 14
+```
+
+Objects can sometimes have properties that they inherit from their prototype chain. Sometimes a filtering step is necessary.
+
+```
+for (var planet in planetMoons) {
+  // additional filter for object properties:
+  if (planetMoons.hasOwnProperty(planet)) {
+    // ...
+  }
+}
+```
